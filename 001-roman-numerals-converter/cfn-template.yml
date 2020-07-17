@@ -1,5 +1,5 @@
 ---
-AWSTemplateFormatVersion: AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion: "2010-09-09"
 
 Description: >
   This is a cloud formation template for roman numerals application.
@@ -50,4 +50,4 @@ Outputs:
     Description: Roman Numerals Converter Application Website URL
     Value: !Sub 
         - http://${PublicAddress}
-        - PublicAddres: !GetAtt MyWebServer.PublicDnsName
+        - PublicAddress: !GetAtt MyWebServer.PublicDnsName

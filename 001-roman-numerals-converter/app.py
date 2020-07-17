@@ -20,7 +20,7 @@ def main_get():
 @app.route('/', methods=['POST'])
 def main_post():
     
-    alpha=request.form('number')
+    alpha=request.form['number']
     if not alpha.isdecimal():
         return render_template('index.html', developer_name='Jeff', not_valid=True)
     
