@@ -19,7 +19,7 @@ def getting():
 @app.route('/', methods = ['POST'])
 def posting():
     alpha = request.form ["number"]
-    if not alpha.isdigit():
+    if not alpha.isdecimal():
         return render_template('index.html', developer_name = 'Cem', not_valid=True)
     
     number = int(alpha)
@@ -28,4 +28,4 @@ def posting():
     return render_template ('result.html', milliseconds=number, result=convert(number), developer_name = 'Cem')
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0', port=80, debug = True)
+    app.run(host = '0.0.0.0', port=80)
