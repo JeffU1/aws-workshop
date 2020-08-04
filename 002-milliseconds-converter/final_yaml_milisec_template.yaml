@@ -46,12 +46,11 @@ Resources:
             yum update -y
             yum install python3 -y
             pip3 install flask
-            TOKEN='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-            FOLDER="https://$TOKEN@raw.githubusercontent.com/clarusway/clarusway-aws-devops-1-20/master/aws/class-notes/portfolio-project-002-07_26_2020/"
+            FOLDER="https://raw.githubusercontent.com/JeffU1/aws-workshop/master/002-milliseconds-converter/"
             curl -s --create-dirs -o "/home/ec2-user/templates/index.html" -L "$FOLDER"templates/index.html
             curl -s --create-dirs -o "/home/ec2-user/templates/result.html" -L "$FOLDER"templates/result.html
-            curl -s --create-dirs -o "/home/ec2-user/app.py" -L "$FOLDER"app.py
-            python3 /home/ec2-user/app.py
+            curl -s --create-dirs -o "/home/ec2-user/miliseconds_convertor.py" -L "$FOLDER"miliseconds_convertor.py
+            python3 /home/ec2-user/miliseconds_convertor.py
   WebServersTG:
     Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
     Properties:
