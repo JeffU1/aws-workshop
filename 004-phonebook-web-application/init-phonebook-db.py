@@ -4,13 +4,13 @@ from mysql.connector import errorcode
 config={
     'user': 'admin',
     'password': 'J123456789',
-    'host':'phonebook-db.cbanmzptkrzf.us-east-1.rds.amazonaws.com',
+    'host':'phonebook-db.crd8pesouk5r.us-east-1.rds.amazonaws.com',
     'database':'phonebook',
     'raise_on_warnings':True
 }
 
 def init_phonebook_db(cursor):
-    drop_table = 'DROP TABLE IF EXISTS phonebook.phonebook;'
+    #drop_table = 'DROP TABLE IF EXISTS phonebook.phonebook;'
     phonebook_table = """
     CREATE TABLE phonebook(
     id INT NOT NULL AUTO_INCREMENT,
@@ -27,7 +27,7 @@ def init_phonebook_db(cursor):
         ("Sarah Neuman", "22324256");
     """
 
-    cursor.execute(drop_table)
+    #cursor.execute(drop_table)
     cursor.execute(phonebook_table)
     cursor.execute(data)
 
