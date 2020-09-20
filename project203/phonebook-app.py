@@ -154,11 +154,11 @@ def delete_record():
     if request.method == 'POST':
         name = request.form['username']
         if name is None or name.strip() == "":
-            return render_template('delete.html', not_valid=True, message='Invalid input: Name can not be empty', show_result=False, developer_name='Callahan')
+            return render_template('delete.html', not_valid=True, message='Invalid input: Name can not be empty', show_result=False, developer_name='Cem')
         result = delete_person(name)
-        return render_template('delete.html', show_result=True, result=result, not_valid=False, developer_name='Callahan')
+        return render_template('delete.html', show_result=True, result=result, not_valid=False, developer_name='Cem')
     else:
-        return render_template('delete.html', show_result=False, not_valid=False, developer_name='Callahan')
+        return render_template('delete.html', show_result=False, not_valid=False, developer_name='Cem')
 
 
 # Add a statement to run the Flask application which can be reached from any host on port 80.
