@@ -187,27 +187,9 @@ Resources:
               mkdir -p /home/ec2-user/.docker
               cd /home/ec2-user/.docker
               echo '{"credsStore": "ecr-login"}' > config.json
-              aws ecr create-repository \
-                --repository-name ${APP_REPO_NAME}
-                --image-scanning-configuration scanOnPush=false \
-                --image-tag-immutability MUTABLE \
-                --region ${AWS::Region}
-              docker build --force-rm -t "${ECR_REGISTRY}/${APP_REPO_NAME}:latest" ${GITHUB_REPO}
-              docker push "${ECR_REGISTRY}/${APP_REPO_NAME}:latest"
-              mkdir -p /home/ec2-user/phonebook
-              cd /home/ec2-user/phonebook
-              cat << EOF | tee .env
-              ECR_REGISTRY=${ECR_REGISTRY}
-              APP_REPO_NAME=${APP_REPO_NAME}
-              EOF
-              curl -o "docker-compose.yml" -L ${GIT_FILE_URL}docker-compose.yml
-              curl -o "init.sql" -L ${GIT_FILE_URL}init.sql
-              docker-compose config | docker stack deploy --with-registry-auth -c - phonebook 
-
             - ECR_REGISTRY: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com
               APP_REPO_NAME: clarusway-repo/phonebook-app
               GITHUB_REPO: https://github.com/JeffU1/project203.git
-              GIT_FILE_URL:https://raw.githubusercontent.com/JeffU1/aws-workshop/master/project203/
 
   DockerManager2:
     Type: "AWS::EC2::Instance"
